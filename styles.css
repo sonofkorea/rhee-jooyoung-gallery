@@ -317,7 +317,8 @@ nav a:hover{ opacity:1; color:var(--gold-bright); }
 }
 @media (orientation:portrait){
   .room-walk-track{ padding:0 92vw; gap:6vh; }
-  .walk-card figure{ width:90vw; height:64svh; }
+  .walk-card figure{ width:90vw; height:60svh; }
+  .walk-card .cap{ margin-top:12px; padding:10px 18px; }
 }
 .walk-card .cap .idx{ font-size:10.5px; letter-spacing:.3em; color:var(--gold-bright); display:block; margin-bottom:8px; }
 .walk-card .cap .t{ font-family:'Noto Serif KR',serif; font-size:clamp(17px,2vw,24px); font-weight:600; margin-bottom:6px; }
@@ -594,6 +595,20 @@ nav a:hover{ opacity:1; color:var(--gold-bright); }
 @media (max-width:640px){
   .player-extra{ gap:8px; max-width:220px; }
   .p-track{ width:44px; }
+  /* smaller, quieter toolbar on phones so it doesn't sit like a big
+     obstruction over the artwork itself */
+  .player{ top:14px; right:3vw; padding:6px; background:rgba(10,8,6,.4); }
+  .p-play{ width:28px; height:28px; }
+  .p-note{ width:26px; height:26px; font-size:14px; margin-left:8px; }
+  .p-note.loud{ font-size:17px; }
+  .p-speeds{ gap:4px; }
+  .p-speed{ width:24px; height:24px; font-size:12px; }
+
+  /* smaller room title, pushed down closer to the very bottom edge so it
+     no longer collides with the painting's own caption above it */
+  .room-title{ bottom:2vh; left:4vw; max-width:80vw; padding:10px 16px; }
+  .room-title .k{ font-size:9px; letter-spacing:.24em; margin-bottom:5px; }
+  .room-title h4{ font-size:16px; }
 }
 
 /* ================= bio ================= */
