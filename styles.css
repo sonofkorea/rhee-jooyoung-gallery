@@ -714,7 +714,10 @@ footer .copyright{ margin-top:44px; font-size:11px; color:rgba(244,237,224,.3); 
 /* ================= responsive ================= */
 @media (max-width:860px){
   .bio-grid{ grid-template-columns:1fr; }
-  .bio-photo{ max-width:280px; margin:0 auto 20px; }
+  /* width:100% is required here — with only absolutely-positioned children
+     (bg/figure/frame) the box has nothing to size itself from in a 1fr
+     grid track, so it was collapsing to 0×0 and the photo looked "gone" */
+  .bio-photo{ width:100%; max-width:280px; margin:0 auto 20px; }
   .cv-cols{ grid-template-columns:1fr; }
   nav ul li:nth-child(n+3){ display:none; }
   .gate-panel{ width:56%; }
