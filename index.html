@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이주영 Rhee Joo-young | 빛과 소리</title>
+<meta name="description" content="화가 이주영(Rhee Joo-young)의 작품 세계를 걸어서 지나가는 몽환적인 온라인 전시. 원형의 오르피즘, 음악의 색채, 후기 풍경.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;600;700;900&family=Noto+Sans+KR:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="ambient"></div>
+<div id="grain"></div>
+<div id="vignette"></div>
+<div id="progress"></div>
+
+<nav>
+  <a class="brand serif" href="#hero" data-jump="top">李周永 · RHEE JOO-YOUNG</a>
+  <ul>
+    <li><a href="#hero" data-jump="top">처음</a></li>
+    <li><a href="#introStage" data-jump="hold">회랑</a></li>
+    <li><a href="#index" data-jump="top">전체보기</a></li>
+    <li><a href="#bio" data-jump="top">작가</a></li>
+    <li><a href="#contact" data-jump="top">연락처</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="bg-wrap"><img id="heroImg" src="assets/art/web2/cover_ohwhee.jpg" alt="오! 환희"></div>
+  <div class="dust" id="dust"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">캔버스 위의 작곡가 — 빛과 색채의 오르피즘</div>
+    <h1 class="serif">이주영</h1>
+    <p>걸음을 옮길 때마다 저 멀리서 그림이 다가옵니다. 안개 속에서 떠오르는 원과 색띠, 진동하는 빛과 소리 — 이주영의 화면 속으로 천천히 걸어 들어가 보세요.</p>
+  </div>
+  <div class="scroll-cue"><div class="ring"></div><span>SCROLL</span></div>
+</section>
+
+<!-- STATEMENT — stepped, one line at a time, candle-lit -->
+<section class="statement-stage" id="statementStage">
+  <div class="statement-sticky">
+    <div class="stmt-glow"></div>
+    <div class="stmt-line serif" data-i="0">“나에게 그림은<br><b>보이는 소리</b>이며,</div>
+    <div class="stmt-line serif" data-i="1">색채는<br><b>진동하는 빛</b>이다.</div>
+    <div class="stmt-line serif" data-i="2">캔버스 위의 원과 띠는<br>멈추어 있지 않고,</div>
+    <div class="stmt-line serif" data-i="3">보는 이의 걸음마다<br>다른 얼굴로 울린다.”</div>
+    <div class="stmt-line stmt-cite" data-i="4">— 화가 이주영의 노트 중에서</div>
+  </div>
+</section>
+
+<!-- ARTIST'S METHOD — its own screen: appears, holds, dissolves -->
+<div class="stage-block" id="methodStage">
+  <div class="stage-sticky">
+    <div class="stage-content method" id="methodContent">
+      <span class="tag">The Method</span>
+      <h2 class="serif">돗자리를 짜듯, 소리를 짠다</h2>
+      <p class="lines">
+        <span class="ln">물감으로 그린 종이를 가늘게는 3mm까지 잘라,</span>
+        <span class="ln">화면 위에 한 가닥씩 엮어 붙인다 —</span>
+        <span class="ln">마치 돗자리를 짜듯, 색채와 형태를 촘촘히 직조해</span>
+        <span class="ln">소리의 결을 만드는 작업이다.</span>
+        <span class="ln">1978년 첫 개인전 이후 40여 년,</span>
+        <span class="ln">화가는 이 손끝의 노동으로 &ldquo;보이는 소리&rdquo;를 완성해왔다.</span>
+      </p>
+      <p class="method-quote serif">&ldquo;소리는 색을 보게 해주고,<br>색은 소리를 듣게 해준다.&rdquo;</p>
+    </div>
+  </div>
+</div>
+
+<!-- CORRIDOR INTRO — its own screen: appears, holds, dissolves -->
+<div class="stage-block" id="introStage">
+  <div class="stage-sticky">
+    <div class="stage-content corridor-intro" id="introContent">
+      <span class="tag">The Gallery</span>
+      <h2 class="serif">전시실을 걷다</h2>
+      <p class="lines">
+        <span class="ln">세 개의 전시실이 이어집니다.</span>
+        <span class="ln">문을 지날 때마다 새로운 주제가 열리고,</span>
+        <span class="ln">방 안에서는 여러 점의 그림이</span>
+        <span class="ln">저 멀리 오른쪽에서 나타나 왼쪽으로 흘러가며,</span>
+        <span class="ln">걸음을 옮길수록 점점 눈앞으로 다가옵니다.</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- CORRIDOR (built by JS) -->
+<div id="corridorTrack"></div>
+<div class="walk-hint" id="walkHint"><span>SCROLL TO WALK FORWARD</span><div class="bar"><i id="walkBar"></i></div></div>
+
+</main>
+
+<!-- UNIFIED CONTROL — one toggle drives both the walk-through autoplay and the
+     background music together. While playing, everything but the toggle
+     itself slides away to the right, leaving just a play/pause indicator. -->
+<div class="player" id="player">
+  <button class="p-play" id="pPlay" aria-label="재생">
+    <svg class="ic-play" viewBox="0 0 24 24" width="16" height="16"><path d="M6 4l14 8-14 8V4z" fill="currentColor"/></svg>
+    <svg class="ic-pause" viewBox="0 0 24 24" width="16" height="16" style="display:none"><path d="M6 4h4v16H6zM14 4h4v16h-4z" fill="currentColor"/></svg>
+  </button>
+  <button class="p-note" id="bgmVol" aria-label="음량 중간" title="음량 중간">♪</button>
+  <div class="player-extra" id="playerExtra">
+    <div class="p-speeds">
+      <button class="p-speed" data-speed="slow" title="천천히 감상">🐢</button>
+      <button class="p-speed active" data-speed="mid" title="중간 속도 감상">🚶</button>
+      <button class="p-speed" data-speed="fast" title="빠르게 감상">🐇</button>
+    </div>
+    <div class="p-track"><i class="p-track-fill" id="pTrackFill"></i></div>
+  </div>
+</div>
+
+
+<!-- LIGHTBOX (deep-space viewer) -->
+<div class="lightbox" id="lightbox">
+  <div class="lb-stars" id="lbStars"></div>
+  <div class="lb-nebula" id="lbNebula"></div>
+  <button class="close" id="lbClose">CLOSE ✕</button>
+  <button class="nav-btn prev" id="lbPrev">‹</button>
+  <button class="nav-btn next" id="lbNext">›</button>
+  <div class="box">
+    <img id="lbImg" src="" alt="">
+    <div class="t serif" id="lbTitle"></div>
+    <div class="m" id="lbMeta"></div>
+  </div>
+</div>
+
+<main>
+<!-- INDEX GRID -->
+<section class="index-section" id="index">
+  <div class="section-head reveal">
+    <span class="tag">Full Index</span>
+    <h2 class="serif">전체 작품 색인</h2>
+    <p>회랑에서 스쳐간 그림들을 다시 한 번, 마음껏 골라보세요.</p>
+  </div>
+  <div class="tabs reveal">
+    <button data-f="all" class="active">전체</button>
+    <button data-f="circle">원형 · 오르피즘</button>
+    <button data-f="music">음악 시리즈</button>
+    <button data-f="landscape">후기 풍경</button>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<!-- BIO -->
+<section class="bio" id="bio">
+  <div class="bio-grid">
+    <div class="bio-photo reveal" id="bioPhoto">
+      <div class="bio-photo-bg" style="background-image:url('assets/art/web3/book_p29_0.jpg')"></div>
+      <img src="assets/art/rjy_portrait.png" alt="화가 이주영" class="bio-photo-figure">
+      <div class="frame"></div>
+    </div>
+    <div class="bio-text reveal">
+      <h3 class="serif">이주영 [李周永] Rhee, Joo young</h3>
+      <div class="role">1941년 경기도 여주 출생 · 단국대학교 미술대학 명예교수</div>
+      <p class="desc">
+        1965년 서울대학교 미술대학 회화과를 졸업하고 1985년 단국대학교 교육대학원을 졸업했다.
+        어릴 적 음악가를 꿈꾸었으나 형편상 미술로 방향을 돌려, 이후 40여 년을 &ldquo;소리를 그림으로&rdquo;
+        옮기는 데 바쳤다. 원과 색띠로 화면을 분해·재구성하는 독자적 조형언어로 &ldquo;한국의 야콥 아감&rdquo;,
+        음악을 그리는 화업으로 &ldquo;캔버스 위의 작곡가&rdquo;라 불린다. 1978년 첫 개인전을 열었고,
+        1991년 회화 400여 점을 투사하는 멀티 슬라이드 프로젝션 &lt;빛과 소리의 앙상블&gt;을 처음 선보였다.
+        서울시립미술관, 예술의전당 한가람미술관, 대전시립미술관, 프랑스 파리 구스타프 갤러리 등에 작품이
+        소장되어 있으며, 1983년 제17회 상파울로 비엔날레(브라질) 한국 대표 작가로 참여했다.
+      </p>
+      <div class="cv-highlight reveal">
+        <div class="hl"><b>12</b><span>개인전</span></div>
+        <div class="hl"><b>6</b><span>국제전</span></div>
+        <div class="hl"><b>11</b><span>멀티 슬라이드 영상전</span></div>
+        <div class="hl"><b>48</b><span>화업 연수 (1978&ndash;)</span></div>
+      </div>
+      <div class="cv-cols">
+        <div class="cv-block">
+          <h4>개인전</h4>
+          <ul>
+            <li>2018 · 서울 강남구 신사동 윤당(Y) 갤러리</li>
+            <li>2012 · 프랑스 파리 몽빠르나스 구스타프 갤러리</li>
+            <li>2009 · 쿠프 갤러리 온라인 전시관</li>
+            <li>2001 · 서울 인사아트센터 갤러리</li>
+            <li>1999 · 단국대학교 예술대학 전시장</li>
+            <li>1996 · 서울 예술의전당 한가람미술관</li>
+            <li>1996 · 서울 청담동 63갤러리</li>
+            <li>1992 · 미국 LA Laca 갤러리</li>
+            <li>1991 · 서울 인사동 조형갤러리</li>
+            <li>1983 · 서울 문예진흥원 미술회관</li>
+            <li>1979 · 프랑스 파리 M.C 그랑비에 갤러리</li>
+            <li>1978 · 서울 견지동 견지화랑 (첫 개인전)</li>
+          </ul>
+        </div>
+        <div class="cv-block">
+          <h4>국제전</h4>
+          <ul>
+            <li>1988 · 서울 국제 현대미술제</li>
+            <li>1988 · Impact Art 페스티벌 (일본 교토)</li>
+            <li>1988 · 서울&ndash;삿포로전</li>
+            <li>1985 · 환태평양 국제 미술전</li>
+            <li>1983 · 제17회 상파울로 비엔날레 (브라질, 한국 대표)</li>
+            <li>1979 · 살롱 드 아르 사크레&middot;마티에르 국제전 (프랑스)</li>
+          </ul>
+        </div>
+        <div class="cv-block">
+          <h4>화랑미술제</h4>
+          <ul>
+            <li>1997 · 서울 판화미술제 [샘터화랑]</li>
+            <li>1995 · 서울화랑미술제 [샘터화랑]</li>
+            <li>1988 · 서울화랑미술제 [나비스화랑]</li>
+          </ul>
+        </div>
+        <div class="cv-block">
+          <h4>단체전</h4>
+          <ul>
+            <li>신체제 구름전</li>
+            <li>앱스트랙 동인전</li>
+            <li>오늘의 작가전</li>
+            <li>프로세스 동인전</li>
+            <li>96 과학+예술전</li>
+            <li>한일 현대미술 동행전</li>
+            <li>6.1동문전</li>
+          </ul>
+        </div>
+        <div class="cv-block">
+          <h4>특별전</h4>
+          <ul>
+            <li>빛과 색채의 탐험전 [서울 예술의전당 특별 기념전]</li>
+            <li>1950&ndash;60년대 한국미술&ndash;서양화 동인전 [예술의전당]</li>
+            <li>한국의 추상미술: 1960년대 전후의 단면전</li>
+            <li>화가의 30년, 그 아름다운 변화 [예술의전당]</li>
+            <li>96 과학+예술전 [한국무역센터]</li>
+            <li>서울시립미술관 개관전</li>
+            <li>대전시립미술관: 대전 미디어아트 2000년전</li>
+            <li>한민족의 빛과 색 [서울시립미술관]</li>
+          </ul>
+        </div>
+        <div class="cv-block cv-block--wide">
+          <h4>Multi-Slide Projection Show &mdash; &lt;빛과 소리의 앙상블&gt; 슬라이드 영상전 (전 11회)</h4>
+          <ul class="cv-list-inline">
+            <li>1회 · 서울 조형갤러리 &ldquo;빛과 소리의 앙상블&rdquo;</li>
+            <li>2회 · 미국 LA Laca 갤러리</li>
+            <li>3회 · 서울 청담동 63갤러리</li>
+            <li>4회 · 서울 예술의전당 한가람미술관 &middot; KBS TV &lsquo;문화가산책&rsquo; 45분 방영</li>
+            <li>5회 · 96 과학+예술전, 한국무역센터</li>
+            <li>6회 · 97 판화미술제, 예술의전당</li>
+            <li>7회 · 아리아와 멀티미디어를 위한 봄의 콘서트, 인천 종합문예회관</li>
+            <li>8회 · 단국대학교 예술대학 특별강좌 (단대 예술극장)</li>
+            <li>9회 · 원광대학교 미술관 개관기념 특별행사</li>
+            <li>10회 · 중앙대학교 예술대학 초청 특별강좌</li>
+            <li>11회 · 대전시립미술관 미디어아트 2000년전</li>
+          </ul>
+        </div>
+        <div class="cv-block cv-block--wide">
+          <h4>작품 소장</h4>
+          <ul>
+            <li>서울시립미술관 &mdash; &ldquo;빛 1&rdquo; (370×244cm), 2002년 소장 · 대한교과서 중학교 3학년 미술 교과서 74&ndash;75면 전면 수록</li>
+            <li>예술의전당 한가람미술관 &mdash; 추상화 100호 2점 소장</li>
+            <li>프랑스 파리 구스타프 갤러리 &mdash; 1점 소장</li>
+            <li>대전시립미술관 &mdash; 1점 소장</li>
+            <li>서울 63갤러리 &mdash; 5점 소장 (상파울로 비엔날레 대표작 포함)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="fmark serif">李周永</div>
+  <div class="copyright">© Rhee Joo-young. All artworks reproduced here are the property of the artist.</div>
+  <div class="copyright">배경음악: F. Chopin, &ldquo;Fantaisie-Impromptu, Op. 66&rdquo; — 김민기 (CC BY 4.0), 출처: 공유마당(gongu.copyright.or.kr), 한국저작권위원회</div>
+</footer>
+</main>
+
+<script src="artworks.js"></script>
+<script src="main.js"></script>
+<script src="bgm.js"></script>
+</body>
+</html>
