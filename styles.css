@@ -593,16 +593,13 @@ nav a:hover{ opacity:1; color:var(--gold-bright); }
 .p-track{ width:90px; height:2px; background:rgba(244,237,224,.14); border-radius:2px; position:relative; overflow:hidden; flex:0 0 auto; }
 .p-track-fill{ position:absolute; inset:0; width:0%; background:linear-gradient(90deg,var(--crimson-bright),var(--gold-bright)); }
 @media (max-width:640px){
-  .player-extra{ gap:8px; max-width:220px; }
-  .p-track{ width:44px; }
-  /* smaller, quieter toolbar on phones so it doesn't sit like a big
-     obstruction over the artwork itself */
+  /* mobile keeps only play/pause + the note button — no speed presets,
+     no progress track, nothing else floating over the artwork */
+  .player-extra{ display:none; }
   .player{ top:14px; right:3vw; padding:6px; background:rgba(10,8,6,.4); }
   .p-play{ width:28px; height:28px; }
   .p-note{ width:26px; height:26px; font-size:14px; margin-left:8px; }
   .p-note.loud{ font-size:17px; }
-  .p-speeds{ gap:4px; }
-  .p-speed{ width:24px; height:24px; font-size:12px; }
 
   /* smaller room title, pushed down closer to the very bottom edge so it
      no longer collides with the painting's own caption above it */
