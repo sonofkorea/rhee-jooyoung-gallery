@@ -721,4 +721,22 @@ footer .copyright{ margin-top:44px; font-size:11px; color:rgba(244,237,224,.3); 
 @media (max-width:520px){
   nav ul{ display:none; }
   .divider .num{ font-size:70vw; }
+
+  /* the brand name needs a translucent backdrop of its own on mobile —
+     otherwise a bright painting scrolling behind it swallows the text */
+  nav .brand{
+    background:rgba(10,8,6,.45); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    padding:8px 14px; border-radius:999px; border:1px solid rgba(244,237,224,.15);
+  }
+
+  /* CLOSE text is dropped to just the × mark, and the button is pulled in
+     to the right edge with a little lift so it never sits on top of the
+     next-arrow (which is centered, near the top) — the right edge is the
+     easiest corner to reach one-handed on a phone */
+  .lightbox .close .close-label{ display:none; }
+  .lightbox .close{
+    top:18px; right:3vw; padding:0; width:36px; height:36px;
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-size:15px;
+  }
 }
