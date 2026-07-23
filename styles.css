@@ -636,9 +636,9 @@ nav a:hover{ opacity:1; color:var(--gold-bright); }
 /* ================= bio ================= */
 .bio{ padding:min(14vw,180px) 5vw; border-top:1px solid var(--line); }
 .bio-grid{ display:grid; grid-template-columns:340px 1fr; gap:70px; max-width:1300px; margin:0 auto; align-items:start; }
-/* the portrait "lives" on top of one of his own paintings — a soft floating
-   drift plays always, and the mouse can nudge a slight 3D tilt on top of it
-   (see the bioPhoto block in main.js) */
+/* the portrait stays still — instead it's the painting behind him that's
+   alive, a slow Ken-Burns-style drift, like the light in the room is
+   shifting rather than the man himself moving */
 .bio-photo{
   position:relative; border-radius:4px; overflow:hidden;
   aspect-ratio:340/430; perspective:900px;
@@ -647,8 +647,12 @@ nav a:hover{ opacity:1; color:var(--gold-bright); }
 .bio-photo-bg{
   position:absolute; inset:-6%; background-size:cover; background-position:center;
   filter:saturate(1.25) brightness(.5) blur(1.5px);
-  transform:scale(1.08); transition:transform .5s var(--ease);
   will-change:transform;
+  animation:bioBgDrift 16s ease-in-out infinite alternate;
+}
+@keyframes bioBgDrift{
+  0%{ transform:scale(1.08) translate(0,0); }
+  100%{ transform:scale(1.22) translate(-3%,-2.5%); }
 }
 .bio-photo-bg::after{
   content:''; position:absolute; inset:0;
@@ -657,15 +661,7 @@ nav a:hover{ opacity:1; color:var(--gold-bright); }
 .bio-photo-figure{
   position:absolute; left:0; right:0; bottom:0; z-index:1;
   width:100%; height:auto; display:block; filter:contrast(1.05);
-  transform-style:preserve-3d; will-change:transform;
-  transition:transform .25s ease-out;
-  animation:bioFloat 7s ease-in-out infinite;
 }
-@keyframes bioFloat{
-  0%,100%{ transform:translateY(0) rotateX(0deg) rotateY(0deg); }
-  50%{ transform:translateY(-8px) rotateX(1.4deg) rotateY(-2deg); }
-}
-.bio-photo-figure.tilting{ animation:none; } /* a running animation on `transform` outranks an inline style, so switch it off while the mouse is driving the tilt */
 .bio-photo .frame{ position:absolute; inset:8px; border:1px solid var(--gold); border-radius:2px; opacity:.5; pointer-events:none; z-index:2; }
 .bio-text h3{ font-family:'Noto Serif KR',serif; font-size:clamp(28px,3vw,40px); margin:0 0 6px; }
 .bio-text .role{ color:var(--gold-bright); font-size:13.5px; letter-spacing:.08em; margin-bottom:28px; }
