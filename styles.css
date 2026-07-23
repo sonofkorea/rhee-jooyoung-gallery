@@ -139,6 +139,12 @@ nav a:hover{ opacity:1; color:var(--gold-bright); }
 .scroll-cue .ring::after{ content:""; position:absolute; top:5px; left:50%; width:2px; height:8px; background:var(--gold-bright); transform:translateX(-50%); animation:scrollDot 1.8s ease-in-out infinite; }
 @keyframes scrollDot{ 0%{ opacity:1; top:5px;} 60%{opacity:0; top:14px;} 100%{opacity:0; top:5px;} }
 .scroll-cue span{ font-size:9.5px; letter-spacing:.3em; color:rgba(244,237,224,.5); }
+@media (max-width:640px){
+  /* hero text sits bottom-aligned and the paragraph's last line was
+     landing right on top of the mouse/SCROLL cue — push the whole
+     block up by roughly two lines of body text so they stop clashing */
+  .hero-content{ padding-bottom:calc(9vw + 60px); }
+}
 
 /* ================= intro statement — stepped reveal, flickering candlelight =================
    One line at a time: each rises out of the dark, holds under candlelight,
